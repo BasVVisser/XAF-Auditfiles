@@ -303,7 +303,7 @@ def merge(dict1, dict2):
 
 def dataframe_opschonen(transacties_df):
     if "amnt" in transacties_df:
-        transacties_df = transacties_df.drop(columns=['amnt'])
+        transacties_df = transacties_df.drop(axis=1, labels=['amnt'])
     transacties_df = transacties_df.dropna(axis=1, how="all")
     return transacties_df
 
