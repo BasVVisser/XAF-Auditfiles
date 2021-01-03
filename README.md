@@ -6,7 +6,7 @@ Dit project bestaat om XAF-auditfiles te importeren in een Pandas DataFrame en h
 
 Er zijn 4 Python-scripts aanewzig. XAF V2 importeert alleen versies V2 van de auditfiles. XAF V3.2 importeert alleen V3.2 van de auditfiles. XAF V2-3 importeert zowel versies 2 als 3 van de auditfiles. XAF V2-3 is het script dat bijgewerkt wordt met updates. Hier is een check aanwezig welke versie van de auditfile geselecteerd is en op basis hiervan wordt de import uitgevoerd. Bij het starten van het script komt de windows verkenner tevoorschijn. Hier kan 1 bestand worden geselecteerd of meerdere bestanden. Bij het selecteren van meerdere bestanden wordt elke auditfile apart omgezet en wordt er een "geconsolideerde" auditfile aangemaakt waarbij alle geselecteerde auditfiles zijn samengevoegd. De gecreëerde CSV-bestanden komen op dezelfde locatie als waar de geselecteerde auditfiles zijn opgeslagen.
 
-XAF V2-3 to IDEA doet hetzelfde als het script V2-3 to CSV maar importeert de auditfile direct in IDEA ten behoeve van analyses. Hiervoor wordt een automatisch RDF-bestand aangemaakt op dezelfde locatie als waar de XAF-auditfiles zijn geselecteerd. Als meerdere auditfiles zijn geselecteerd wordt de geconsolideerde versie geïmporteerd, als er 1 auditfile wordt geselecteerd wordt die in IDEA geïmporteerd. Bij de geconsolideerde versie worden wel alle CSV-bestanden gegenereerd dus die kunnen eventueel handmatig in IDEA worden geïmporteerd. Om het script in IDEA te gebruiken is het nodig om het script toe te voegen als macro.
+XAF V2-3 to IDEA doet hetzelfde als het script V2-3 to CSV maar importeert de auditfile direct in IDEA ten behoeve van analyses. Hiervoor wordt een automatisch RDF-bestand aangemaakt op dezelfde locatie als waar de XAF-auditfiles zijn geselecteerd. Als meerdere auditfiles zijn geselecteerd wordt de geconsolideerde versie geïmporteerd, als er 1 auditfile wordt geselecteerd wordt die in IDEA geïmporteerd. Bij de geconsolideerde versie worden wel alle CSV-bestanden gegenereerd dus die kunnen eventueel handmatig in IDEA worden geïmporteerd. Om het script in IDEA te gebruiken is het nodig om het script toe te voegen als macro (Dit script is compitabel met IDEA V10.4, de andere 3 scripts hebben een hogere versie van Python nodig om goed te werken).
 
 ## Functionaliteit
 
@@ -30,6 +30,7 @@ De auditfile moet in .XAF formaat aanwezig zijn.
 Om de Python scripts te gebruiken moet Python geïnstalleerd zijn. Deze scripts zijn gebaseerd op V3.5.3
 
 De volgende modules worden in de scripts gebruikt en moeten geïnstalleerd zijn:
+
 - Pandas
 - Numpy
 - Sys
