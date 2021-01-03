@@ -77,11 +77,11 @@ def informatie_tweede_laag(root, ns):
             if len(subchild) != 0:
                 for subsubchild in subchild:
                     kolomwaarde = subsubchild.text
-                    kolomnaam = subsubchild.tag.replace(ns,'')
+                    kolomnaam = subsubchild.tag.replace(ns,"")
                     informatie_opslaan[kolomnaam] = kolomwaarde
             else:
                 kolomwaarde =subchild.text
-                kolomnaam = subchild.tag.replace(ns,'')
+                kolomnaam = subchild.tag.replace(ns,"")
                 informatie_opslaan[kolomnaam] = kolomwaarde
         regels[huidige_regel] = informatie_opslaan
         huidige_regel +=1
@@ -409,7 +409,6 @@ def IDEA_import(exportbestand):
         idea = None
         dbName = None
 
-
 #Start hoofdprogramma
 if __name__ == "__main__":
     
@@ -492,12 +491,12 @@ if __name__ == "__main__":
             ##### Voor het geconsolideerde gedeelte, alles hiervoor was enkelvoudig.
             #Als er meer dan 1 bestand geselecteerd is wordt de data aan de geconsolideerde versie toegevoegd.
             if len(filenames) == 1:
-                IDEA_import(exportbestand)
+                IDEA_import(exportbestand)                
             elif len(filenames) > 1:
                 geconsolideerd = pd.concat([geconsolideerd, transacties_df], axis=0, ignore_index=True)
         
         elif root.tag == "auditfile": #ADF 2
-            namespaces = ""
+            namespaces = {"ADF":"auditfile"}
             ns = ""
 
             #Algemene informatie V2
@@ -511,13 +510,13 @@ if __name__ == "__main__":
             
             openingsbalans = XAF_element_vinden(root, "openingBalance", namespaces)
             openingsbalansinfo = pd.DataFrame(hoofdlaag_informatie(openingsbalans, ns), index = [0])
-            openingbalance = informatie_tweede_laag(root.findall("openingBalance/",namespaces),ns)
+            openingbalance = informatie_tweede_laag(root.findall("openingBalance/"),ns)
 
             auditfile_algemene_informatie = algemene_informatie_samenvoegen(openingsbalans, openingsbalansinfo, headerinfo, companyinfo, transactionsinfo)
 
             #Overige tabellen
-            genledg = informatie_tweede_laag(root.findall("generalLedger/",""),"")
-            custsup = informatie_tweede_laag(root.findall("customersSuppliers/",""),"")
+            genledg = informatie_tweede_laag(root.findall("generalLedger/"), ns)
+            custsup = informatie_tweede_laag(root.findall("customersSuppliers/"), ns)
             periods = pd.DataFrame()
             vatcode = pd.DataFrame()
 
@@ -543,7 +542,7 @@ if __name__ == "__main__":
                                 decimal=",",
                                 sep=";")
             if len(filenames) == 1:
-                IDEA_import(exportbestand)
+                IDEA_import(exportbestand)                
             elif len(filenames) > 1:
                 geconsolideerd = pd.concat([geconsolideerd, transacties_df], axis=0, ignore_index=True)
 
