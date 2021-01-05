@@ -405,9 +405,16 @@ def IDEA_import(exportbestand):
         idea.ImportDelimFile(exportbestand, dbName, False, "", rdfpath, True)
         idea.OpenDatabase(dbName)
         idea.RefreshFileExplorer()
+
+        #Controletotaal
+        db = idea.OpenDatabase(dbName)
+        db.FieldStats("BEDRAG")
+        db.ControlAmountField("BEDRAG")
+
     finally:
         idea = None
         dbName = None
+        db = None
 
 #Start hoofdprogramma
 if __name__ == "__main__":
