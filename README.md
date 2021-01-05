@@ -15,7 +15,7 @@ XAF V2-3 to IDEA doet hetzelfde als het script V2-3 to CSV maar importeert de au
 - Meerdere auditfiles tegelijk importeren en samenvoegen
 - Debet/Credit wordt toegevoegd bij V3 en het totaalbedrag wordt toegevoegd bij V2
 - Lege kolommen worden automatisch verwijderd
-- De auditfile wordt automatisch in IDEA geïmporteerd ten behoeve van analyses
+- De auditfile wordt automatisch in IDEA geïmporteerd ten behoeve van analyses (Controletotaal wordt hierbij automatisch berekend.)
 
 ## Toekomstig
 
@@ -27,7 +27,7 @@ XAF V2-3 to IDEA doet hetzelfde als het script V2-3 to CSV maar importeert de au
 
 De auditfile moet in .XAF formaat aanwezig zijn.
 
-Om de Python scripts te gebruiken moet Python geïnstalleerd zijn. Deze scripts zijn gebaseerd op V3.5.3
+Om de Python scripts te gebruiken moet Python geïnstalleerd zijn. Deze scripts zijn gebaseerd op V3.8.3. De scripts voor IDEA zijn gebaseerd op V3.5.3 aangezien dit de versie is die bij IDEA V10.4 is meegeleverd.
 
 De volgende modules worden in de scripts gebruikt en moeten geïnstalleerd zijn:
 
@@ -39,4 +39,9 @@ De volgende modules worden in de scripts gebruikt en moeten geïnstalleerd zijn:
 - tkinter
 - win32com.client (Alleen voor de automatische import in IDEA)
 
+Van deze modules zijn alleen de Pandas en Numpy module niet in de standaardbibliotheek van Python aanwezig en moeten apart worden geïnstalleerd.
 In Caseware IDEA 10.4 zijn deze modules aanwezig en hoeft het niet apart geïnstalleerd te worden als de scripts vanuit IDEA worden gebruikt. Bij de instellingen moet wel worden aangegeven dat Python-scripts gebruikt kunnen worden voordat het werkt.
+
+## Openstaande issues
+
+Bij V2 auditfiles kunnen encoding fouten aanwezig zijn door het gebruik van speciale karakters die niet tot de Windows-1252 standaard behoren. Er komt dan een error "Invalid token". Dit moet nog opgelost worden.
